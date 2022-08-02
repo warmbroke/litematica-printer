@@ -15,6 +15,15 @@ group = project.maven_group
 repositories {
     //maven { url 'https://masa.dy.fi/maven' }
     //maven { url = "https://www.cursemaven.com" }
+    ivy {
+        url 'https://github.com/warmbroke'
+        metadataSources {
+            artifact()
+        }
+        patternLayout {
+            artifact "[organization]/releases/download/[classifier]/[artifact]-[revision].jar"
+        }
+    }
 }
 
 dependencies {
@@ -26,8 +35,8 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 //	modImplementation "fi.dy.masa.malilib:malilib-fabric-${project.malilib_version}"
 //	modImplementation "curse.maven:litematica-${project.litematica_projectid}:${project.litematica_fileid}"
-	modImplementation files("prebuilt/malilib-fabric-1.19-0.12.1.jar")
-	modImplementation files("prebuilt/litematica-fabric-1.19-0.11.3.jar")
+	modImplementation("malilib:malilib-fabric:1.19.1-0.12.1:a577b6e")
+	modImplementation("litematica:litematica-fabric:1.19.1-0.11.3:230539b")
 }
 
 processResources {
